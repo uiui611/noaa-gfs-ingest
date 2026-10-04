@@ -1,0 +1,30 @@
+# Build outputs and local tools
+/target/
+/dist/
+/.audit/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.log
+*.bak
+*.orig
+*.rej
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+.kube/
+kubeconfig
+kubeconfig.*
+*.kubeconfig
+secrets/
+*.secret.yaml
+*.secret.yml
+*-secret.yaml
+*-secret.yml
+*.key
+*.pem
+*.p12
+*.pfx

@@ -1,0 +1,9 @@
+# Only application inputs belong in the Docker build context.
+*
+!Cargo.toml
+!Cargo.lock
+!src/
+!src/**
+!gfs-fields.csv
+!Dockerfile
+!.dockerignore

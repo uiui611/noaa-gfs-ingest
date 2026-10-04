@@ -1,0 +1,747 @@
+## NOAA GFS 0.25 degree pgrb2 selection catalog.
+## Source inventory: https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/gfs.20260824/06/atmos/gfs.t06z.pgrb2.0p25.f003.idx
+## Lines beginning with one # are disabled; remove/add # to select fields.
+short_name,level,statistic,occurrence,zarr_name,common_name_ja
+PRMSL,mean sea level,instant,1,mean_sea_level_pressure,海面更正気圧
+#CLWMR,1 hybrid level,instant,1,clwmr_1_hybrid_level_instant_1,雲水混合比
+#ICMR,1 hybrid level,instant,1,icmr_1_hybrid_level_instant_1,雲氷混合比
+#RWMR,1 hybrid level,instant,1,rwmr_1_hybrid_level_instant_1,雨水混合比
+#SNMR,1 hybrid level,instant,1,snmr_1_hybrid_level_instant_1,雪混合比
+#GRLE,1 hybrid level,instant,1,grle_1_hybrid_level_instant_1,霰混合比
+#REFD,1 hybrid level,instant,1,refd_1_hybrid_level_instant_1,レーダー反射強度
+#REFD,2 hybrid level,instant,1,refd_2_hybrid_level_instant_1,レーダー反射強度
+#REFC,entire atmosphere,instant,1,refc_entire_atmosphere_instant_1,合成レーダー反射強度
+#VIS,surface,instant,1,vis_surface_instant_1,視程
+#UGRD,planetary boundary layer,instant,1,ugrd_planetary_boundary_layer_instant_1,東西風
+#VGRD,planetary boundary layer,instant,1,vgrd_planetary_boundary_layer_instant_1,南北風
+#VRATE,planetary boundary layer,instant,1,vrate_planetary_boundary_layer_instant_1,換気率
+#GUST,surface,instant,1,gust_surface_instant_1,突風速度
+#HGT,0.01 mb,instant,1,hgt_0_01_mb_instant_1,ジオポテンシャル高度
+#TMP,0.01 mb,instant,1,tmp_0_01_mb_instant_1,気温
+#RH,0.01 mb,instant,1,rh_0_01_mb_instant_1,相対湿度
+#SPFH,0.01 mb,instant,1,spfh_0_01_mb_instant_1,比湿
+#VVEL,0.01 mb,instant,1,vvel_0_01_mb_instant_1,鉛直速度（気圧）
+#DZDT,0.01 mb,instant,1,dzdt_0_01_mb_instant_1,鉛直速度（幾何）
+#UGRD,0.01 mb,instant,1,ugrd_0_01_mb_instant_1,東西風
+#VGRD,0.01 mb,instant,1,vgrd_0_01_mb_instant_1,南北風
+#ABSV,0.01 mb,instant,1,absv_0_01_mb_instant_1,絶対渦度
+#O3MR,0.01 mb,instant,1,o3mr_0_01_mb_instant_1,オゾン混合比
+#HGT,0.02 mb,instant,1,hgt_0_02_mb_instant_1,ジオポテンシャル高度
+#TMP,0.02 mb,instant,1,tmp_0_02_mb_instant_1,気温
+#RH,0.02 mb,instant,1,rh_0_02_mb_instant_1,相対湿度
+#SPFH,0.02 mb,instant,1,spfh_0_02_mb_instant_1,比湿
+#VVEL,0.02 mb,instant,1,vvel_0_02_mb_instant_1,鉛直速度（気圧）
+#DZDT,0.02 mb,instant,1,dzdt_0_02_mb_instant_1,鉛直速度（幾何）
+#UGRD,0.02 mb,instant,1,ugrd_0_02_mb_instant_1,東西風
+#VGRD,0.02 mb,instant,1,vgrd_0_02_mb_instant_1,南北風
+#ABSV,0.02 mb,instant,1,absv_0_02_mb_instant_1,絶対渦度
+#O3MR,0.02 mb,instant,1,o3mr_0_02_mb_instant_1,オゾン混合比
+#HGT,0.04 mb,instant,1,hgt_0_04_mb_instant_1,ジオポテンシャル高度
+#TMP,0.04 mb,instant,1,tmp_0_04_mb_instant_1,気温
+#RH,0.04 mb,instant,1,rh_0_04_mb_instant_1,相対湿度
+#SPFH,0.04 mb,instant,1,spfh_0_04_mb_instant_1,比湿
+#VVEL,0.04 mb,instant,1,vvel_0_04_mb_instant_1,鉛直速度（気圧）
+#DZDT,0.04 mb,instant,1,dzdt_0_04_mb_instant_1,鉛直速度（幾何）
+#UGRD,0.04 mb,instant,1,ugrd_0_04_mb_instant_1,東西風
+#VGRD,0.04 mb,instant,1,vgrd_0_04_mb_instant_1,南北風
+#ABSV,0.04 mb,instant,1,absv_0_04_mb_instant_1,絶対渦度
+#O3MR,0.04 mb,instant,1,o3mr_0_04_mb_instant_1,オゾン混合比
+#HGT,0.07 mb,instant,1,hgt_0_07_mb_instant_1,ジオポテンシャル高度
+#TMP,0.07 mb,instant,1,tmp_0_07_mb_instant_1,気温
+#RH,0.07 mb,instant,1,rh_0_07_mb_instant_1,相対湿度
+#SPFH,0.07 mb,instant,1,spfh_0_07_mb_instant_1,比湿
+#VVEL,0.07 mb,instant,1,vvel_0_07_mb_instant_1,鉛直速度（気圧）
+#DZDT,0.07 mb,instant,1,dzdt_0_07_mb_instant_1,鉛直速度（幾何）
+#UGRD,0.07 mb,instant,1,ugrd_0_07_mb_instant_1,東西風
+#VGRD,0.07 mb,instant,1,vgrd_0_07_mb_instant_1,南北風
+#ABSV,0.07 mb,instant,1,absv_0_07_mb_instant_1,絶対渦度
+#O3MR,0.07 mb,instant,1,o3mr_0_07_mb_instant_1,オゾン混合比
+#HGT,0.1 mb,instant,1,hgt_0_1_mb_instant_1,ジオポテンシャル高度
+#TMP,0.1 mb,instant,1,tmp_0_1_mb_instant_1,気温
+#RH,0.1 mb,instant,1,rh_0_1_mb_instant_1,相対湿度
+#SPFH,0.1 mb,instant,1,spfh_0_1_mb_instant_1,比湿
+#VVEL,0.1 mb,instant,1,vvel_0_1_mb_instant_1,鉛直速度（気圧）
+#DZDT,0.1 mb,instant,1,dzdt_0_1_mb_instant_1,鉛直速度（幾何）
+#UGRD,0.1 mb,instant,1,ugrd_0_1_mb_instant_1,東西風
+#VGRD,0.1 mb,instant,1,vgrd_0_1_mb_instant_1,南北風
+#ABSV,0.1 mb,instant,1,absv_0_1_mb_instant_1,絶対渦度
+#O3MR,0.1 mb,instant,1,o3mr_0_1_mb_instant_1,オゾン混合比
+#HGT,0.2 mb,instant,1,hgt_0_2_mb_instant_1,ジオポテンシャル高度
+#TMP,0.2 mb,instant,1,tmp_0_2_mb_instant_1,気温
+#RH,0.2 mb,instant,1,rh_0_2_mb_instant_1,相対湿度
+#SPFH,0.2 mb,instant,1,spfh_0_2_mb_instant_1,比湿
+#VVEL,0.2 mb,instant,1,vvel_0_2_mb_instant_1,鉛直速度（気圧）
+#DZDT,0.2 mb,instant,1,dzdt_0_2_mb_instant_1,鉛直速度（幾何）
+#UGRD,0.2 mb,instant,1,ugrd_0_2_mb_instant_1,東西風
+#VGRD,0.2 mb,instant,1,vgrd_0_2_mb_instant_1,南北風
+#ABSV,0.2 mb,instant,1,absv_0_2_mb_instant_1,絶対渦度
+#O3MR,0.2 mb,instant,1,o3mr_0_2_mb_instant_1,オゾン混合比
+#HGT,0.4 mb,instant,1,hgt_0_4_mb_instant_1,ジオポテンシャル高度
+#TMP,0.4 mb,instant,1,tmp_0_4_mb_instant_1,気温
+#RH,0.4 mb,instant,1,rh_0_4_mb_instant_1,相対湿度
+#SPFH,0.4 mb,instant,1,spfh_0_4_mb_instant_1,比湿
+#VVEL,0.4 mb,instant,1,vvel_0_4_mb_instant_1,鉛直速度（気圧）
+#DZDT,0.4 mb,instant,1,dzdt_0_4_mb_instant_1,鉛直速度（幾何）
+#UGRD,0.4 mb,instant,1,ugrd_0_4_mb_instant_1,東西風
+#VGRD,0.4 mb,instant,1,vgrd_0_4_mb_instant_1,南北風
+#ABSV,0.4 mb,instant,1,absv_0_4_mb_instant_1,絶対渦度
+#O3MR,0.4 mb,instant,1,o3mr_0_4_mb_instant_1,オゾン混合比
+#HGT,0.7 mb,instant,1,hgt_0_7_mb_instant_1,ジオポテンシャル高度
+#TMP,0.7 mb,instant,1,tmp_0_7_mb_instant_1,気温
+#RH,0.7 mb,instant,1,rh_0_7_mb_instant_1,相対湿度
+#SPFH,0.7 mb,instant,1,spfh_0_7_mb_instant_1,比湿
+#VVEL,0.7 mb,instant,1,vvel_0_7_mb_instant_1,鉛直速度（気圧）
+#DZDT,0.7 mb,instant,1,dzdt_0_7_mb_instant_1,鉛直速度（幾何）
+#UGRD,0.7 mb,instant,1,ugrd_0_7_mb_instant_1,東西風
+#VGRD,0.7 mb,instant,1,vgrd_0_7_mb_instant_1,南北風
+#ABSV,0.7 mb,instant,1,absv_0_7_mb_instant_1,絶対渦度
+#O3MR,0.7 mb,instant,1,o3mr_0_7_mb_instant_1,オゾン混合比
+#HGT,1 mb,instant,1,hgt_1_mb_instant_1,ジオポテンシャル高度
+#TMP,1 mb,instant,1,tmp_1_mb_instant_1,気温
+#RH,1 mb,instant,1,rh_1_mb_instant_1,相対湿度
+#SPFH,1 mb,instant,1,spfh_1_mb_instant_1,比湿
+#VVEL,1 mb,instant,1,vvel_1_mb_instant_1,鉛直速度（気圧）
+#DZDT,1 mb,instant,1,dzdt_1_mb_instant_1,鉛直速度（幾何）
+#UGRD,1 mb,instant,1,ugrd_1_mb_instant_1,東西風
+#VGRD,1 mb,instant,1,vgrd_1_mb_instant_1,南北風
+#ABSV,1 mb,instant,1,absv_1_mb_instant_1,絶対渦度
+#O3MR,1 mb,instant,1,o3mr_1_mb_instant_1,オゾン混合比
+#HGT,2 mb,instant,1,hgt_2_mb_instant_1,ジオポテンシャル高度
+#TMP,2 mb,instant,1,tmp_2_mb_instant_1,気温
+#RH,2 mb,instant,1,rh_2_mb_instant_1,相対湿度
+#SPFH,2 mb,instant,1,spfh_2_mb_instant_1,比湿
+#VVEL,2 mb,instant,1,vvel_2_mb_instant_1,鉛直速度（気圧）
+#DZDT,2 mb,instant,1,dzdt_2_mb_instant_1,鉛直速度（幾何）
+#UGRD,2 mb,instant,1,ugrd_2_mb_instant_1,東西風
+#VGRD,2 mb,instant,1,vgrd_2_mb_instant_1,南北風
+#ABSV,2 mb,instant,1,absv_2_mb_instant_1,絶対渦度
+#O3MR,2 mb,instant,1,o3mr_2_mb_instant_1,オゾン混合比
+#HGT,3 mb,instant,1,hgt_3_mb_instant_1,ジオポテンシャル高度
+#TMP,3 mb,instant,1,tmp_3_mb_instant_1,気温
+#RH,3 mb,instant,1,rh_3_mb_instant_1,相対湿度
+#SPFH,3 mb,instant,1,spfh_3_mb_instant_1,比湿
+#VVEL,3 mb,instant,1,vvel_3_mb_instant_1,鉛直速度（気圧）
+#DZDT,3 mb,instant,1,dzdt_3_mb_instant_1,鉛直速度（幾何）
+#UGRD,3 mb,instant,1,ugrd_3_mb_instant_1,東西風
+#VGRD,3 mb,instant,1,vgrd_3_mb_instant_1,南北風
+#ABSV,3 mb,instant,1,absv_3_mb_instant_1,絶対渦度
+#O3MR,3 mb,instant,1,o3mr_3_mb_instant_1,オゾン混合比
+#HGT,5 mb,instant,1,hgt_5_mb_instant_1,ジオポテンシャル高度
+#TMP,5 mb,instant,1,tmp_5_mb_instant_1,気温
+#RH,5 mb,instant,1,rh_5_mb_instant_1,相対湿度
+#SPFH,5 mb,instant,1,spfh_5_mb_instant_1,比湿
+#VVEL,5 mb,instant,1,vvel_5_mb_instant_1,鉛直速度（気圧）
+#DZDT,5 mb,instant,1,dzdt_5_mb_instant_1,鉛直速度（幾何）
+#UGRD,5 mb,instant,1,ugrd_5_mb_instant_1,東西風
+#VGRD,5 mb,instant,1,vgrd_5_mb_instant_1,南北風
+#ABSV,5 mb,instant,1,absv_5_mb_instant_1,絶対渦度
+#O3MR,5 mb,instant,1,o3mr_5_mb_instant_1,オゾン混合比
+#HGT,7 mb,instant,1,hgt_7_mb_instant_1,ジオポテンシャル高度
+#TMP,7 mb,instant,1,tmp_7_mb_instant_1,気温
+#RH,7 mb,instant,1,rh_7_mb_instant_1,相対湿度
+#SPFH,7 mb,instant,1,spfh_7_mb_instant_1,比湿
+#VVEL,7 mb,instant,1,vvel_7_mb_instant_1,鉛直速度（気圧）
+#DZDT,7 mb,instant,1,dzdt_7_mb_instant_1,鉛直速度（幾何）
+#UGRD,7 mb,instant,1,ugrd_7_mb_instant_1,東西風
+#VGRD,7 mb,instant,1,vgrd_7_mb_instant_1,南北風
+#ABSV,7 mb,instant,1,absv_7_mb_instant_1,絶対渦度
+#O3MR,7 mb,instant,1,o3mr_7_mb_instant_1,オゾン混合比
+#HGT,10 mb,instant,1,hgt_10_mb_instant_1,ジオポテンシャル高度
+#TMP,10 mb,instant,1,tmp_10_mb_instant_1,気温
+#RH,10 mb,instant,1,rh_10_mb_instant_1,相対湿度
+#SPFH,10 mb,instant,1,spfh_10_mb_instant_1,比湿
+#VVEL,10 mb,instant,1,vvel_10_mb_instant_1,鉛直速度（気圧）
+#DZDT,10 mb,instant,1,dzdt_10_mb_instant_1,鉛直速度（幾何）
+#UGRD,10 mb,instant,1,ugrd_10_mb_instant_1,東西風
+#VGRD,10 mb,instant,1,vgrd_10_mb_instant_1,南北風
+#ABSV,10 mb,instant,1,absv_10_mb_instant_1,絶対渦度
+#O3MR,10 mb,instant,1,o3mr_10_mb_instant_1,オゾン混合比
+#HGT,15 mb,instant,1,hgt_15_mb_instant_1,ジオポテンシャル高度
+#TMP,15 mb,instant,1,tmp_15_mb_instant_1,気温
+#RH,15 mb,instant,1,rh_15_mb_instant_1,相対湿度
+#SPFH,15 mb,instant,1,spfh_15_mb_instant_1,比湿
+#VVEL,15 mb,instant,1,vvel_15_mb_instant_1,鉛直速度（気圧）
+#DZDT,15 mb,instant,1,dzdt_15_mb_instant_1,鉛直速度（幾何）
+#UGRD,15 mb,instant,1,ugrd_15_mb_instant_1,東西風
+#VGRD,15 mb,instant,1,vgrd_15_mb_instant_1,南北風
+#ABSV,15 mb,instant,1,absv_15_mb_instant_1,絶対渦度
+#O3MR,15 mb,instant,1,o3mr_15_mb_instant_1,オゾン混合比
+#HGT,20 mb,instant,1,hgt_20_mb_instant_1,ジオポテンシャル高度
+#TMP,20 mb,instant,1,tmp_20_mb_instant_1,気温
+#RH,20 mb,instant,1,rh_20_mb_instant_1,相対湿度
+#SPFH,20 mb,instant,1,spfh_20_mb_instant_1,比湿
+#VVEL,20 mb,instant,1,vvel_20_mb_instant_1,鉛直速度（気圧）
+#DZDT,20 mb,instant,1,dzdt_20_mb_instant_1,鉛直速度（幾何）
+#UGRD,20 mb,instant,1,ugrd_20_mb_instant_1,東西風
+#VGRD,20 mb,instant,1,vgrd_20_mb_instant_1,南北風
+#ABSV,20 mb,instant,1,absv_20_mb_instant_1,絶対渦度
+#O3MR,20 mb,instant,1,o3mr_20_mb_instant_1,オゾン混合比
+#HGT,30 mb,instant,1,hgt_30_mb_instant_1,ジオポテンシャル高度
+#TMP,30 mb,instant,1,tmp_30_mb_instant_1,気温
+#RH,30 mb,instant,1,rh_30_mb_instant_1,相対湿度
+#SPFH,30 mb,instant,1,spfh_30_mb_instant_1,比湿
+#VVEL,30 mb,instant,1,vvel_30_mb_instant_1,鉛直速度（気圧）
+#DZDT,30 mb,instant,1,dzdt_30_mb_instant_1,鉛直速度（幾何）
+#UGRD,30 mb,instant,1,ugrd_30_mb_instant_1,東西風
+#VGRD,30 mb,instant,1,vgrd_30_mb_instant_1,南北風
+#ABSV,30 mb,instant,1,absv_30_mb_instant_1,絶対渦度
+#O3MR,30 mb,instant,1,o3mr_30_mb_instant_1,オゾン混合比
+#HGT,40 mb,instant,1,hgt_40_mb_instant_1,ジオポテンシャル高度
+#TMP,40 mb,instant,1,tmp_40_mb_instant_1,気温
+#RH,40 mb,instant,1,rh_40_mb_instant_1,相対湿度
+#SPFH,40 mb,instant,1,spfh_40_mb_instant_1,比湿
+#VVEL,40 mb,instant,1,vvel_40_mb_instant_1,鉛直速度（気圧）
+#DZDT,40 mb,instant,1,dzdt_40_mb_instant_1,鉛直速度（幾何）
+#UGRD,40 mb,instant,1,ugrd_40_mb_instant_1,東西風
+#VGRD,40 mb,instant,1,vgrd_40_mb_instant_1,南北風
+#ABSV,40 mb,instant,1,absv_40_mb_instant_1,絶対渦度
+#O3MR,40 mb,instant,1,o3mr_40_mb_instant_1,オゾン混合比
+#HGT,50 mb,instant,1,hgt_50_mb_instant_1,ジオポテンシャル高度
+#TMP,50 mb,instant,1,tmp_50_mb_instant_1,気温
+#RH,50 mb,instant,1,rh_50_mb_instant_1,相対湿度
+#TCDC,50 mb,instant,1,tcdc_50_mb_instant_1,全雲量
+#SPFH,50 mb,instant,1,spfh_50_mb_instant_1,比湿
+#VVEL,50 mb,instant,1,vvel_50_mb_instant_1,鉛直速度（気圧）
+#DZDT,50 mb,instant,1,dzdt_50_mb_instant_1,鉛直速度（幾何）
+#UGRD,50 mb,instant,1,ugrd_50_mb_instant_1,東西風
+#VGRD,50 mb,instant,1,vgrd_50_mb_instant_1,南北風
+#ABSV,50 mb,instant,1,absv_50_mb_instant_1,絶対渦度
+#CLWMR,50 mb,instant,1,clwmr_50_mb_instant_1,雲水混合比
+#ICMR,50 mb,instant,1,icmr_50_mb_instant_1,雲氷混合比
+#RWMR,50 mb,instant,1,rwmr_50_mb_instant_1,雨水混合比
+#SNMR,50 mb,instant,1,snmr_50_mb_instant_1,雪混合比
+#GRLE,50 mb,instant,1,grle_50_mb_instant_1,霰混合比
+#O3MR,50 mb,instant,1,o3mr_50_mb_instant_1,オゾン混合比
+#HGT,70 mb,instant,1,hgt_70_mb_instant_1,ジオポテンシャル高度
+#TMP,70 mb,instant,1,tmp_70_mb_instant_1,気温
+#RH,70 mb,instant,1,rh_70_mb_instant_1,相対湿度
+#SPFH,70 mb,instant,1,spfh_70_mb_instant_1,比湿
+#VVEL,70 mb,instant,1,vvel_70_mb_instant_1,鉛直速度（気圧）
+#DZDT,70 mb,instant,1,dzdt_70_mb_instant_1,鉛直速度（幾何）
+#UGRD,70 mb,instant,1,ugrd_70_mb_instant_1,東西風
+#VGRD,70 mb,instant,1,vgrd_70_mb_instant_1,南北風
+#ABSV,70 mb,instant,1,absv_70_mb_instant_1,絶対渦度
+#O3MR,70 mb,instant,1,o3mr_70_mb_instant_1,オゾン混合比
+#HGT,100 mb,instant,1,hgt_100_mb_instant_1,ジオポテンシャル高度
+#TMP,100 mb,instant,1,tmp_100_mb_instant_1,気温
+#RH,100 mb,instant,1,rh_100_mb_instant_1,相対湿度
+#TCDC,100 mb,instant,1,tcdc_100_mb_instant_1,全雲量
+#SPFH,100 mb,instant,1,spfh_100_mb_instant_1,比湿
+#VVEL,100 mb,instant,1,vvel_100_mb_instant_1,鉛直速度（気圧）
+#DZDT,100 mb,instant,1,dzdt_100_mb_instant_1,鉛直速度（幾何）
+#UGRD,100 mb,instant,1,ugrd_100_mb_instant_1,東西風
+#VGRD,100 mb,instant,1,vgrd_100_mb_instant_1,南北風
+#ABSV,100 mb,instant,1,absv_100_mb_instant_1,絶対渦度
+#CLWMR,100 mb,instant,1,clwmr_100_mb_instant_1,雲水混合比
+#ICMR,100 mb,instant,1,icmr_100_mb_instant_1,雲氷混合比
+#RWMR,100 mb,instant,1,rwmr_100_mb_instant_1,雨水混合比
+#SNMR,100 mb,instant,1,snmr_100_mb_instant_1,雪混合比
+#GRLE,100 mb,instant,1,grle_100_mb_instant_1,霰混合比
+#O3MR,100 mb,instant,1,o3mr_100_mb_instant_1,オゾン混合比
+#HGT,150 mb,instant,1,hgt_150_mb_instant_1,ジオポテンシャル高度
+#TMP,150 mb,instant,1,tmp_150_mb_instant_1,気温
+#RH,150 mb,instant,1,rh_150_mb_instant_1,相対湿度
+#TCDC,150 mb,instant,1,tcdc_150_mb_instant_1,全雲量
+#SPFH,150 mb,instant,1,spfh_150_mb_instant_1,比湿
+#VVEL,150 mb,instant,1,vvel_150_mb_instant_1,鉛直速度（気圧）
+#DZDT,150 mb,instant,1,dzdt_150_mb_instant_1,鉛直速度（幾何）
+#UGRD,150 mb,instant,1,ugrd_150_mb_instant_1,東西風
+#VGRD,150 mb,instant,1,vgrd_150_mb_instant_1,南北風
+#ABSV,150 mb,instant,1,absv_150_mb_instant_1,絶対渦度
+#CLWMR,150 mb,instant,1,clwmr_150_mb_instant_1,雲水混合比
+#ICMR,150 mb,instant,1,icmr_150_mb_instant_1,雲氷混合比
+#RWMR,150 mb,instant,1,rwmr_150_mb_instant_1,雨水混合比
+#SNMR,150 mb,instant,1,snmr_150_mb_instant_1,雪混合比
+#GRLE,150 mb,instant,1,grle_150_mb_instant_1,霰混合比
+#O3MR,150 mb,instant,1,o3mr_150_mb_instant_1,オゾン混合比
+#HGT,200 mb,instant,1,hgt_200_mb_instant_1,ジオポテンシャル高度
+#TMP,200 mb,instant,1,tmp_200_mb_instant_1,気温
+#RH,200 mb,instant,1,rh_200_mb_instant_1,相対湿度
+#TCDC,200 mb,instant,1,tcdc_200_mb_instant_1,全雲量
+#SPFH,200 mb,instant,1,spfh_200_mb_instant_1,比湿
+#VVEL,200 mb,instant,1,vvel_200_mb_instant_1,鉛直速度（気圧）
+#DZDT,200 mb,instant,1,dzdt_200_mb_instant_1,鉛直速度（幾何）
+#UGRD,200 mb,instant,1,ugrd_200_mb_instant_1,東西風
+#VGRD,200 mb,instant,1,vgrd_200_mb_instant_1,南北風
+#ABSV,200 mb,instant,1,absv_200_mb_instant_1,絶対渦度
+#CLWMR,200 mb,instant,1,clwmr_200_mb_instant_1,雲水混合比
+#ICMR,200 mb,instant,1,icmr_200_mb_instant_1,雲氷混合比
+#RWMR,200 mb,instant,1,rwmr_200_mb_instant_1,雨水混合比
+#SNMR,200 mb,instant,1,snmr_200_mb_instant_1,雪混合比
+#GRLE,200 mb,instant,1,grle_200_mb_instant_1,霰混合比
+#O3MR,200 mb,instant,1,o3mr_200_mb_instant_1,オゾン混合比
+#HGT,250 mb,instant,1,hgt_250_mb_instant_1,ジオポテンシャル高度
+#TMP,250 mb,instant,1,tmp_250_mb_instant_1,気温
+#RH,250 mb,instant,1,rh_250_mb_instant_1,相対湿度
+#TCDC,250 mb,instant,1,tcdc_250_mb_instant_1,全雲量
+#SPFH,250 mb,instant,1,spfh_250_mb_instant_1,比湿
+#VVEL,250 mb,instant,1,vvel_250_mb_instant_1,鉛直速度（気圧）
+#DZDT,250 mb,instant,1,dzdt_250_mb_instant_1,鉛直速度（幾何）
+#UGRD,250 mb,instant,1,ugrd_250_mb_instant_1,東西風
+#VGRD,250 mb,instant,1,vgrd_250_mb_instant_1,南北風
+#ABSV,250 mb,instant,1,absv_250_mb_instant_1,絶対渦度
+#CLWMR,250 mb,instant,1,clwmr_250_mb_instant_1,雲水混合比
+#ICMR,250 mb,instant,1,icmr_250_mb_instant_1,雲氷混合比
+#RWMR,250 mb,instant,1,rwmr_250_mb_instant_1,雨水混合比
+#SNMR,250 mb,instant,1,snmr_250_mb_instant_1,雪混合比
+#GRLE,250 mb,instant,1,grle_250_mb_instant_1,霰混合比
+#O3MR,250 mb,instant,1,o3mr_250_mb_instant_1,オゾン混合比
+#HGT,300 mb,instant,1,hgt_300_mb_instant_1,ジオポテンシャル高度
+#TMP,300 mb,instant,1,tmp_300_mb_instant_1,気温
+#RH,300 mb,instant,1,rh_300_mb_instant_1,相対湿度
+#TCDC,300 mb,instant,1,tcdc_300_mb_instant_1,全雲量
+#SPFH,300 mb,instant,1,spfh_300_mb_instant_1,比湿
+#VVEL,300 mb,instant,1,vvel_300_mb_instant_1,鉛直速度（気圧）
+#DZDT,300 mb,instant,1,dzdt_300_mb_instant_1,鉛直速度（幾何）
+#UGRD,300 mb,instant,1,ugrd_300_mb_instant_1,東西風
+#VGRD,300 mb,instant,1,vgrd_300_mb_instant_1,南北風
+#ABSV,300 mb,instant,1,absv_300_mb_instant_1,絶対渦度
+#CLWMR,300 mb,instant,1,clwmr_300_mb_instant_1,雲水混合比
+#ICMR,300 mb,instant,1,icmr_300_mb_instant_1,雲氷混合比
+#RWMR,300 mb,instant,1,rwmr_300_mb_instant_1,雨水混合比
+#SNMR,300 mb,instant,1,snmr_300_mb_instant_1,雪混合比
+#GRLE,300 mb,instant,1,grle_300_mb_instant_1,霰混合比
+#O3MR,300 mb,instant,1,o3mr_300_mb_instant_1,オゾン混合比
+#HGT,350 mb,instant,1,hgt_350_mb_instant_1,ジオポテンシャル高度
+#TMP,350 mb,instant,1,tmp_350_mb_instant_1,気温
+#RH,350 mb,instant,1,rh_350_mb_instant_1,相対湿度
+#TCDC,350 mb,instant,1,tcdc_350_mb_instant_1,全雲量
+#SPFH,350 mb,instant,1,spfh_350_mb_instant_1,比湿
+#VVEL,350 mb,instant,1,vvel_350_mb_instant_1,鉛直速度（気圧）
+#DZDT,350 mb,instant,1,dzdt_350_mb_instant_1,鉛直速度（幾何）
+#UGRD,350 mb,instant,1,ugrd_350_mb_instant_1,東西風
+#VGRD,350 mb,instant,1,vgrd_350_mb_instant_1,南北風
+#ABSV,350 mb,instant,1,absv_350_mb_instant_1,絶対渦度
+#CLWMR,350 mb,instant,1,clwmr_350_mb_instant_1,雲水混合比
+#ICMR,350 mb,instant,1,icmr_350_mb_instant_1,雲氷混合比
+#RWMR,350 mb,instant,1,rwmr_350_mb_instant_1,雨水混合比
+#SNMR,350 mb,instant,1,snmr_350_mb_instant_1,雪混合比
+#GRLE,350 mb,instant,1,grle_350_mb_instant_1,霰混合比
+#O3MR,350 mb,instant,1,o3mr_350_mb_instant_1,オゾン混合比
+#HGT,400 mb,instant,1,hgt_400_mb_instant_1,ジオポテンシャル高度
+#TMP,400 mb,instant,1,tmp_400_mb_instant_1,気温
+#RH,400 mb,instant,1,rh_400_mb_instant_1,相対湿度
+#TCDC,400 mb,instant,1,tcdc_400_mb_instant_1,全雲量
+#SPFH,400 mb,instant,1,spfh_400_mb_instant_1,比湿
+#VVEL,400 mb,instant,1,vvel_400_mb_instant_1,鉛直速度（気圧）
+#DZDT,400 mb,instant,1,dzdt_400_mb_instant_1,鉛直速度（幾何）
+#UGRD,400 mb,instant,1,ugrd_400_mb_instant_1,東西風
+#VGRD,400 mb,instant,1,vgrd_400_mb_instant_1,南北風
+#ABSV,400 mb,instant,1,absv_400_mb_instant_1,絶対渦度
+#CLWMR,400 mb,instant,1,clwmr_400_mb_instant_1,雲水混合比
+#ICMR,400 mb,instant,1,icmr_400_mb_instant_1,雲氷混合比
+#RWMR,400 mb,instant,1,rwmr_400_mb_instant_1,雨水混合比
+#SNMR,400 mb,instant,1,snmr_400_mb_instant_1,雪混合比
+#GRLE,400 mb,instant,1,grle_400_mb_instant_1,霰混合比
+#O3MR,400 mb,instant,1,o3mr_400_mb_instant_1,オゾン混合比
+#HGT,450 mb,instant,1,hgt_450_mb_instant_1,ジオポテンシャル高度
+#TMP,450 mb,instant,1,tmp_450_mb_instant_1,気温
+#RH,450 mb,instant,1,rh_450_mb_instant_1,相対湿度
+#TCDC,450 mb,instant,1,tcdc_450_mb_instant_1,全雲量
+#SPFH,450 mb,instant,1,spfh_450_mb_instant_1,比湿
+#VVEL,450 mb,instant,1,vvel_450_mb_instant_1,鉛直速度（気圧）
+#DZDT,450 mb,instant,1,dzdt_450_mb_instant_1,鉛直速度（幾何）
+#UGRD,450 mb,instant,1,ugrd_450_mb_instant_1,東西風
+#VGRD,450 mb,instant,1,vgrd_450_mb_instant_1,南北風
+#ABSV,450 mb,instant,1,absv_450_mb_instant_1,絶対渦度
+#CLWMR,450 mb,instant,1,clwmr_450_mb_instant_1,雲水混合比
+#ICMR,450 mb,instant,1,icmr_450_mb_instant_1,雲氷混合比
+#RWMR,450 mb,instant,1,rwmr_450_mb_instant_1,雨水混合比
+#SNMR,450 mb,instant,1,snmr_450_mb_instant_1,雪混合比
+#GRLE,450 mb,instant,1,grle_450_mb_instant_1,霰混合比
+#O3MR,450 mb,instant,1,o3mr_450_mb_instant_1,オゾン混合比
+#HGT,500 mb,instant,1,hgt_500_mb_instant_1,ジオポテンシャル高度
+#TMP,500 mb,instant,1,tmp_500_mb_instant_1,気温
+#RH,500 mb,instant,1,rh_500_mb_instant_1,相対湿度
+#TCDC,500 mb,instant,1,tcdc_500_mb_instant_1,全雲量
+#SPFH,500 mb,instant,1,spfh_500_mb_instant_1,比湿
+#VVEL,500 mb,instant,1,vvel_500_mb_instant_1,鉛直速度（気圧）
+#DZDT,500 mb,instant,1,dzdt_500_mb_instant_1,鉛直速度（幾何）
+#UGRD,500 mb,instant,1,ugrd_500_mb_instant_1,東西風
+#VGRD,500 mb,instant,1,vgrd_500_mb_instant_1,南北風
+#ABSV,500 mb,instant,1,absv_500_mb_instant_1,絶対渦度
+#CLWMR,500 mb,instant,1,clwmr_500_mb_instant_1,雲水混合比
+#ICMR,500 mb,instant,1,icmr_500_mb_instant_1,雲氷混合比
+#RWMR,500 mb,instant,1,rwmr_500_mb_instant_1,雨水混合比
+#SNMR,500 mb,instant,1,snmr_500_mb_instant_1,雪混合比
+#GRLE,500 mb,instant,1,grle_500_mb_instant_1,霰混合比
+#O3MR,500 mb,instant,1,o3mr_500_mb_instant_1,オゾン混合比
+#HGT,550 mb,instant,1,hgt_550_mb_instant_1,ジオポテンシャル高度
+#TMP,550 mb,instant,1,tmp_550_mb_instant_1,気温
+#RH,550 mb,instant,1,rh_550_mb_instant_1,相対湿度
+#TCDC,550 mb,instant,1,tcdc_550_mb_instant_1,全雲量
+#SPFH,550 mb,instant,1,spfh_550_mb_instant_1,比湿
+#VVEL,550 mb,instant,1,vvel_550_mb_instant_1,鉛直速度（気圧）
+#DZDT,550 mb,instant,1,dzdt_550_mb_instant_1,鉛直速度（幾何）
+#UGRD,550 mb,instant,1,ugrd_550_mb_instant_1,東西風
+#VGRD,550 mb,instant,1,vgrd_550_mb_instant_1,南北風
+#ABSV,550 mb,instant,1,absv_550_mb_instant_1,絶対渦度
+#CLWMR,550 mb,instant,1,clwmr_550_mb_instant_1,雲水混合比
+#ICMR,550 mb,instant,1,icmr_550_mb_instant_1,雲氷混合比
+#RWMR,550 mb,instant,1,rwmr_550_mb_instant_1,雨水混合比
+#SNMR,550 mb,instant,1,snmr_550_mb_instant_1,雪混合比
+#GRLE,550 mb,instant,1,grle_550_mb_instant_1,霰混合比
+#O3MR,550 mb,instant,1,o3mr_550_mb_instant_1,オゾン混合比
+#HGT,600 mb,instant,1,hgt_600_mb_instant_1,ジオポテンシャル高度
+#TMP,600 mb,instant,1,tmp_600_mb_instant_1,気温
+#RH,600 mb,instant,1,rh_600_mb_instant_1,相対湿度
+#TCDC,600 mb,instant,1,tcdc_600_mb_instant_1,全雲量
+#SPFH,600 mb,instant,1,spfh_600_mb_instant_1,比湿
+#VVEL,600 mb,instant,1,vvel_600_mb_instant_1,鉛直速度（気圧）
+#DZDT,600 mb,instant,1,dzdt_600_mb_instant_1,鉛直速度（幾何）
+#UGRD,600 mb,instant,1,ugrd_600_mb_instant_1,東西風
+#VGRD,600 mb,instant,1,vgrd_600_mb_instant_1,南北風
+#ABSV,600 mb,instant,1,absv_600_mb_instant_1,絶対渦度
+#CLWMR,600 mb,instant,1,clwmr_600_mb_instant_1,雲水混合比
+#ICMR,600 mb,instant,1,icmr_600_mb_instant_1,雲氷混合比
+#RWMR,600 mb,instant,1,rwmr_600_mb_instant_1,雨水混合比
+#SNMR,600 mb,instant,1,snmr_600_mb_instant_1,雪混合比
+#GRLE,600 mb,instant,1,grle_600_mb_instant_1,霰混合比
+#O3MR,600 mb,instant,1,o3mr_600_mb_instant_1,オゾン混合比
+#HGT,650 mb,instant,1,hgt_650_mb_instant_1,ジオポテンシャル高度
+#TMP,650 mb,instant,1,tmp_650_mb_instant_1,気温
+#RH,650 mb,instant,1,rh_650_mb_instant_1,相対湿度
+#TCDC,650 mb,instant,1,tcdc_650_mb_instant_1,全雲量
+#SPFH,650 mb,instant,1,spfh_650_mb_instant_1,比湿
+#VVEL,650 mb,instant,1,vvel_650_mb_instant_1,鉛直速度（気圧）
+#DZDT,650 mb,instant,1,dzdt_650_mb_instant_1,鉛直速度（幾何）
+#UGRD,650 mb,instant,1,ugrd_650_mb_instant_1,東西風
+#VGRD,650 mb,instant,1,vgrd_650_mb_instant_1,南北風
+#ABSV,650 mb,instant,1,absv_650_mb_instant_1,絶対渦度
+#CLWMR,650 mb,instant,1,clwmr_650_mb_instant_1,雲水混合比
+#ICMR,650 mb,instant,1,icmr_650_mb_instant_1,雲氷混合比
+#RWMR,650 mb,instant,1,rwmr_650_mb_instant_1,雨水混合比
+#SNMR,650 mb,instant,1,snmr_650_mb_instant_1,雪混合比
+#GRLE,650 mb,instant,1,grle_650_mb_instant_1,霰混合比
+#O3MR,650 mb,instant,1,o3mr_650_mb_instant_1,オゾン混合比
+#HGT,700 mb,instant,1,hgt_700_mb_instant_1,ジオポテンシャル高度
+#TMP,700 mb,instant,1,tmp_700_mb_instant_1,気温
+#RH,700 mb,instant,1,rh_700_mb_instant_1,相対湿度
+#TCDC,700 mb,instant,1,tcdc_700_mb_instant_1,全雲量
+#SPFH,700 mb,instant,1,spfh_700_mb_instant_1,比湿
+#VVEL,700 mb,instant,1,vvel_700_mb_instant_1,鉛直速度（気圧）
+#DZDT,700 mb,instant,1,dzdt_700_mb_instant_1,鉛直速度（幾何）
+#UGRD,700 mb,instant,1,ugrd_700_mb_instant_1,東西風
+#VGRD,700 mb,instant,1,vgrd_700_mb_instant_1,南北風
+#ABSV,700 mb,instant,1,absv_700_mb_instant_1,絶対渦度
+#CLWMR,700 mb,instant,1,clwmr_700_mb_instant_1,雲水混合比
+#ICMR,700 mb,instant,1,icmr_700_mb_instant_1,雲氷混合比
+#RWMR,700 mb,instant,1,rwmr_700_mb_instant_1,雨水混合比
+#SNMR,700 mb,instant,1,snmr_700_mb_instant_1,雪混合比
+#GRLE,700 mb,instant,1,grle_700_mb_instant_1,霰混合比
+#O3MR,700 mb,instant,1,o3mr_700_mb_instant_1,オゾン混合比
+#HGT,750 mb,instant,1,hgt_750_mb_instant_1,ジオポテンシャル高度
+#TMP,750 mb,instant,1,tmp_750_mb_instant_1,気温
+#RH,750 mb,instant,1,rh_750_mb_instant_1,相対湿度
+#TCDC,750 mb,instant,1,tcdc_750_mb_instant_1,全雲量
+#SPFH,750 mb,instant,1,spfh_750_mb_instant_1,比湿
+#VVEL,750 mb,instant,1,vvel_750_mb_instant_1,鉛直速度（気圧）
+#DZDT,750 mb,instant,1,dzdt_750_mb_instant_1,鉛直速度（幾何）
+#UGRD,750 mb,instant,1,ugrd_750_mb_instant_1,東西風
+#VGRD,750 mb,instant,1,vgrd_750_mb_instant_1,南北風
+#ABSV,750 mb,instant,1,absv_750_mb_instant_1,絶対渦度
+#CLWMR,750 mb,instant,1,clwmr_750_mb_instant_1,雲水混合比
+#ICMR,750 mb,instant,1,icmr_750_mb_instant_1,雲氷混合比
+#RWMR,750 mb,instant,1,rwmr_750_mb_instant_1,雨水混合比
+#SNMR,750 mb,instant,1,snmr_750_mb_instant_1,雪混合比
+#GRLE,750 mb,instant,1,grle_750_mb_instant_1,霰混合比
+#O3MR,750 mb,instant,1,o3mr_750_mb_instant_1,オゾン混合比
+#HGT,800 mb,instant,1,hgt_800_mb_instant_1,ジオポテンシャル高度
+#TMP,800 mb,instant,1,tmp_800_mb_instant_1,気温
+#RH,800 mb,instant,1,rh_800_mb_instant_1,相対湿度
+#TCDC,800 mb,instant,1,tcdc_800_mb_instant_1,全雲量
+#SPFH,800 mb,instant,1,spfh_800_mb_instant_1,比湿
+#VVEL,800 mb,instant,1,vvel_800_mb_instant_1,鉛直速度（気圧）
+#DZDT,800 mb,instant,1,dzdt_800_mb_instant_1,鉛直速度（幾何）
+#UGRD,800 mb,instant,1,ugrd_800_mb_instant_1,東西風
+#VGRD,800 mb,instant,1,vgrd_800_mb_instant_1,南北風
+#ABSV,800 mb,instant,1,absv_800_mb_instant_1,絶対渦度
+#CLWMR,800 mb,instant,1,clwmr_800_mb_instant_1,雲水混合比
+#ICMR,800 mb,instant,1,icmr_800_mb_instant_1,雲氷混合比
+#RWMR,800 mb,instant,1,rwmr_800_mb_instant_1,雨水混合比
+#SNMR,800 mb,instant,1,snmr_800_mb_instant_1,雪混合比
+#GRLE,800 mb,instant,1,grle_800_mb_instant_1,霰混合比
+#O3MR,800 mb,instant,1,o3mr_800_mb_instant_1,オゾン混合比
+#HGT,850 mb,instant,1,hgt_850_mb_instant_1,ジオポテンシャル高度
+#TMP,850 mb,instant,1,tmp_850_mb_instant_1,気温
+#RH,850 mb,instant,1,rh_850_mb_instant_1,相対湿度
+#TCDC,850 mb,instant,1,tcdc_850_mb_instant_1,全雲量
+#SPFH,850 mb,instant,1,spfh_850_mb_instant_1,比湿
+#VVEL,850 mb,instant,1,vvel_850_mb_instant_1,鉛直速度（気圧）
+#DZDT,850 mb,instant,1,dzdt_850_mb_instant_1,鉛直速度（幾何）
+#UGRD,850 mb,instant,1,ugrd_850_mb_instant_1,東西風
+#VGRD,850 mb,instant,1,vgrd_850_mb_instant_1,南北風
+#ABSV,850 mb,instant,1,absv_850_mb_instant_1,絶対渦度
+#CLWMR,850 mb,instant,1,clwmr_850_mb_instant_1,雲水混合比
+#ICMR,850 mb,instant,1,icmr_850_mb_instant_1,雲氷混合比
+#RWMR,850 mb,instant,1,rwmr_850_mb_instant_1,雨水混合比
+#SNMR,850 mb,instant,1,snmr_850_mb_instant_1,雪混合比
+#GRLE,850 mb,instant,1,grle_850_mb_instant_1,霰混合比
+#O3MR,850 mb,instant,1,o3mr_850_mb_instant_1,オゾン混合比
+#HGT,900 mb,instant,1,hgt_900_mb_instant_1,ジオポテンシャル高度
+#TMP,900 mb,instant,1,tmp_900_mb_instant_1,気温
+#RH,900 mb,instant,1,rh_900_mb_instant_1,相対湿度
+#TCDC,900 mb,instant,1,tcdc_900_mb_instant_1,全雲量
+#SPFH,900 mb,instant,1,spfh_900_mb_instant_1,比湿
+#VVEL,900 mb,instant,1,vvel_900_mb_instant_1,鉛直速度（気圧）
+#DZDT,900 mb,instant,1,dzdt_900_mb_instant_1,鉛直速度（幾何）
+#UGRD,900 mb,instant,1,ugrd_900_mb_instant_1,東西風
+#VGRD,900 mb,instant,1,vgrd_900_mb_instant_1,南北風
+#ABSV,900 mb,instant,1,absv_900_mb_instant_1,絶対渦度
+#CLWMR,900 mb,instant,1,clwmr_900_mb_instant_1,雲水混合比
+#ICMR,900 mb,instant,1,icmr_900_mb_instant_1,雲氷混合比
+#RWMR,900 mb,instant,1,rwmr_900_mb_instant_1,雨水混合比
+#SNMR,900 mb,instant,1,snmr_900_mb_instant_1,雪混合比
+#GRLE,900 mb,instant,1,grle_900_mb_instant_1,霰混合比
+#O3MR,900 mb,instant,1,o3mr_900_mb_instant_1,オゾン混合比
+#HGT,925 mb,instant,1,hgt_925_mb_instant_1,ジオポテンシャル高度
+#TMP,925 mb,instant,1,tmp_925_mb_instant_1,気温
+#RH,925 mb,instant,1,rh_925_mb_instant_1,相対湿度
+#TCDC,925 mb,instant,1,tcdc_925_mb_instant_1,全雲量
+#SPFH,925 mb,instant,1,spfh_925_mb_instant_1,比湿
+#VVEL,925 mb,instant,1,vvel_925_mb_instant_1,鉛直速度（気圧）
+#DZDT,925 mb,instant,1,dzdt_925_mb_instant_1,鉛直速度（幾何）
+#UGRD,925 mb,instant,1,ugrd_925_mb_instant_1,東西風
+#VGRD,925 mb,instant,1,vgrd_925_mb_instant_1,南北風
+#ABSV,925 mb,instant,1,absv_925_mb_instant_1,絶対渦度
+#CLWMR,925 mb,instant,1,clwmr_925_mb_instant_1,雲水混合比
+#ICMR,925 mb,instant,1,icmr_925_mb_instant_1,雲氷混合比
+#RWMR,925 mb,instant,1,rwmr_925_mb_instant_1,雨水混合比
+#SNMR,925 mb,instant,1,snmr_925_mb_instant_1,雪混合比
+#GRLE,925 mb,instant,1,grle_925_mb_instant_1,霰混合比
+#O3MR,925 mb,instant,1,o3mr_925_mb_instant_1,オゾン混合比
+#HGT,950 mb,instant,1,hgt_950_mb_instant_1,ジオポテンシャル高度
+#TMP,950 mb,instant,1,tmp_950_mb_instant_1,気温
+#RH,950 mb,instant,1,rh_950_mb_instant_1,相対湿度
+#TCDC,950 mb,instant,1,tcdc_950_mb_instant_1,全雲量
+#SPFH,950 mb,instant,1,spfh_950_mb_instant_1,比湿
+#VVEL,950 mb,instant,1,vvel_950_mb_instant_1,鉛直速度（気圧）
+#DZDT,950 mb,instant,1,dzdt_950_mb_instant_1,鉛直速度（幾何）
+#UGRD,950 mb,instant,1,ugrd_950_mb_instant_1,東西風
+#VGRD,950 mb,instant,1,vgrd_950_mb_instant_1,南北風
+#ABSV,950 mb,instant,1,absv_950_mb_instant_1,絶対渦度
+#CLWMR,950 mb,instant,1,clwmr_950_mb_instant_1,雲水混合比
+#ICMR,950 mb,instant,1,icmr_950_mb_instant_1,雲氷混合比
+#RWMR,950 mb,instant,1,rwmr_950_mb_instant_1,雨水混合比
+#SNMR,950 mb,instant,1,snmr_950_mb_instant_1,雪混合比
+#GRLE,950 mb,instant,1,grle_950_mb_instant_1,霰混合比
+#O3MR,950 mb,instant,1,o3mr_950_mb_instant_1,オゾン混合比
+#HINDEX,surface,instant,1,hindex_surface_instant_1,ヘインズ指数
+#HGT,975 mb,instant,1,hgt_975_mb_instant_1,ジオポテンシャル高度
+#TMP,975 mb,instant,1,tmp_975_mb_instant_1,気温
+#RH,975 mb,instant,1,rh_975_mb_instant_1,相対湿度
+#TCDC,975 mb,instant,1,tcdc_975_mb_instant_1,全雲量
+#SPFH,975 mb,instant,1,spfh_975_mb_instant_1,比湿
+#VVEL,975 mb,instant,1,vvel_975_mb_instant_1,鉛直速度（気圧）
+#DZDT,975 mb,instant,1,dzdt_975_mb_instant_1,鉛直速度（幾何）
+#UGRD,975 mb,instant,1,ugrd_975_mb_instant_1,東西風
+#VGRD,975 mb,instant,1,vgrd_975_mb_instant_1,南北風
+#ABSV,975 mb,instant,1,absv_975_mb_instant_1,絶対渦度
+#CLWMR,975 mb,instant,1,clwmr_975_mb_instant_1,雲水混合比
+#ICMR,975 mb,instant,1,icmr_975_mb_instant_1,雲氷混合比
+#RWMR,975 mb,instant,1,rwmr_975_mb_instant_1,雨水混合比
+#SNMR,975 mb,instant,1,snmr_975_mb_instant_1,雪混合比
+#GRLE,975 mb,instant,1,grle_975_mb_instant_1,霰混合比
+#O3MR,975 mb,instant,1,o3mr_975_mb_instant_1,オゾン混合比
+#TMP,1000 mb,instant,1,tmp_1000_mb_instant_1,気温
+#RH,1000 mb,instant,1,rh_1000_mb_instant_1,相対湿度
+#TCDC,1000 mb,instant,1,tcdc_1000_mb_instant_1,全雲量
+#SPFH,1000 mb,instant,1,spfh_1000_mb_instant_1,比湿
+#VVEL,1000 mb,instant,1,vvel_1000_mb_instant_1,鉛直速度（気圧）
+#DZDT,1000 mb,instant,1,dzdt_1000_mb_instant_1,鉛直速度（幾何）
+#UGRD,1000 mb,instant,1,ugrd_1000_mb_instant_1,東西風
+#VGRD,1000 mb,instant,1,vgrd_1000_mb_instant_1,南北風
+#ABSV,1000 mb,instant,1,absv_1000_mb_instant_1,絶対渦度
+#CLWMR,1000 mb,instant,1,clwmr_1000_mb_instant_1,雲水混合比
+#ICMR,1000 mb,instant,1,icmr_1000_mb_instant_1,雲氷混合比
+#RWMR,1000 mb,instant,1,rwmr_1000_mb_instant_1,雨水混合比
+#SNMR,1000 mb,instant,1,snmr_1000_mb_instant_1,雪混合比
+#GRLE,1000 mb,instant,1,grle_1000_mb_instant_1,霰混合比
+#O3MR,1000 mb,instant,1,o3mr_1000_mb_instant_1,オゾン混合比
+#MSLET,mean sea level,instant,1,mslet_mean_sea_level_instant_1,ETA換算海面更正気圧
+#HGT,1000 mb,instant,1,hgt_1000_mb_instant_1,ジオポテンシャル高度
+#REFD,4000 m above ground,instant,1,refd_4000_m_above_ground_instant_1,レーダー反射強度
+#REFD,1000 m above ground,instant,1,refd_1000_m_above_ground_instant_1,レーダー反射強度
+#PRES,surface,instant,1,pres_surface_instant_1,気圧
+#HGT,surface,instant,1,hgt_surface_instant_1,ジオポテンシャル高度
+#TMP,surface,instant,1,tmp_surface_instant_1,気温
+#TSOIL,0-0.1 m below ground,instant,1,tsoil_0_0_1_m_below_ground_instant_1,土壌温度
+#SOILW,0-0.1 m below ground,instant,1,soilw_0_0_1_m_below_ground_instant_1,土壌水分
+#SOILL,0-0.1 m below ground,instant,1,soill_0_0_1_m_below_ground_instant_1,液体土壌水分
+#TSOIL,0.1-0.4 m below ground,instant,1,tsoil_0_1_0_4_m_below_ground_instant_1,土壌温度
+#SOILW,0.1-0.4 m below ground,instant,1,soilw_0_1_0_4_m_below_ground_instant_1,土壌水分
+#SOILL,0.1-0.4 m below ground,instant,1,soill_0_1_0_4_m_below_ground_instant_1,液体土壌水分
+#TSOIL,0.4-1 m below ground,instant,1,tsoil_0_4_1_m_below_ground_instant_1,土壌温度
+#SOILW,0.4-1 m below ground,instant,1,soilw_0_4_1_m_below_ground_instant_1,土壌水分
+#SOILL,0.4-1 m below ground,instant,1,soill_0_4_1_m_below_ground_instant_1,液体土壌水分
+#TSOIL,1-2 m below ground,instant,1,tsoil_1_2_m_below_ground_instant_1,土壌温度
+#SOILW,1-2 m below ground,instant,1,soilw_1_2_m_below_ground_instant_1,土壌水分
+#SOILL,1-2 m below ground,instant,1,soill_1_2_m_below_ground_instant_1,液体土壌水分
+#CNWAT,surface,instant,1,cnwat_surface_instant_1,植生冠水量
+#WEASD,surface,instant,1,weasd_surface_instant_1,積雪水量
+#SNOD,surface,instant,1,snod_surface_instant_1,積雪深
+#PEVPR,surface,instant,1,pevpr_surface_instant_1,潜在蒸発率
+#ICETK,surface,instant,1,icetk_surface_instant_1,海氷厚
+TMP,2 m above ground,instant,1,air_temperature_2m,地上2m気温
+#SPFH,2 m above ground,instant,1,spfh_2_m_above_ground_instant_1,比湿
+#DPT,2 m above ground,instant,1,dpt_2_m_above_ground_instant_1,露点温度
+RH,2 m above ground,instant,1,relative_humidity_2m,地上2m相対湿度
+#APTMP,2 m above ground,instant,1,aptmp_2_m_above_ground_instant_1,体感温度
+#TMAX,2 m above ground,maximum,1,tmax_2_m_above_ground_maximum_1,最高気温
+#TMIN,2 m above ground,minimum,1,tmin_2_m_above_ground_minimum_1,最低気温
+UGRD,10 m above ground,instant,1,eastward_wind_10m,地上10m東西風
+VGRD,10 m above ground,instant,1,northward_wind_10m,地上10m南北風
+#ICEG,10 m above mean sea level,instant,1,iceg_10_m_above_mean_sea_level_instant_1,着氷強度
+#CPOFP,surface,instant,1,cpofp_surface_instant_1,凍結降水率
+#CPRAT,surface,instant,1,cprat_surface_instant_1,対流性降水率
+#PRATE,surface,instant,1,prate_surface_instant_1,降水率
+#CPRAT,surface,average,1,cprat_surface_average_1,対流性降水率
+#PRATE,surface,average,1,prate_surface_average_1,降水率
+APCP,surface,accumulation,1,precipitation_amount,総降水量
+#APCP,surface,accumulation,2,apcp_surface_accumulation_2,総降水量
+#ACPCP,surface,accumulation,1,acpcp_surface_accumulation_1,対流性降水量
+#ACPCP,surface,accumulation,2,acpcp_surface_accumulation_2,対流性降水量
+#WATR,surface,accumulation,1,watr_surface_accumulation_1,水収支
+#CSNOW,surface,instant,1,csnow_surface_instant_1,降雪確率
+#CICEP,surface,instant,1,cicep_surface_instant_1,凍雨確率
+#CFRZR,surface,instant,1,cfrzr_surface_instant_1,着氷性降水確率
+#CRAIN,surface,instant,1,crain_surface_instant_1,降雨確率
+#CSNOW,surface,average,1,csnow_surface_average_1,降雪確率
+#CICEP,surface,average,1,cicep_surface_average_1,凍雨確率
+#CFRZR,surface,average,1,cfrzr_surface_average_1,着氷性降水確率
+#CRAIN,surface,average,1,crain_surface_average_1,降雨確率
+#LHTFL,surface,average,1,lhtfl_surface_average_1,潜熱フラックス
+#SHTFL,surface,average,1,shtfl_surface_average_1,顕熱フラックス
+#GFLUX,surface,average,1,gflux_surface_average_1,地中熱フラックス
+#UFLX,surface,average,1,uflx_surface_average_1,運動量フラックス東西成分
+#VFLX,surface,average,1,vflx_surface_average_1,運動量フラックス南北成分
+#SFCR,surface,instant,1,sfcr_surface_instant_1,表面粗度
+#FRICV,surface,instant,1,fricv_surface_instant_1,摩擦速度
+#U-GWD,surface,average,1,u_gwd_surface_average_1,重力波抗力東西成分
+#V-GWD,surface,average,1,v_gwd_surface_average_1,重力波抗力南北成分
+#VEG,surface,instant,1,veg_surface_instant_1,植生率
+#SOTYP,surface,instant,1,sotyp_surface_instant_1,土壌型
+#WILT,surface,instant,1,wilt_surface_instant_1,しおれ点
+#FLDCP,surface,instant,1,fldcp_surface_instant_1,圃場容水量
+#SUNSD,surface,instant,1,sunsd_surface_instant_1,日照時間
+#LFTX,surface,instant,1,lftx_surface_instant_1,リフティド指数
+#CAPE,surface,instant,1,cape_surface_instant_1,対流有効位置エネルギー
+#CIN,surface,instant,1,cin_surface_instant_1,対流抑制
+#PWAT,entire atmosphere (considered as a single layer),instant,1,pwat_entire_atmosphere_considered_as_a_single_layer_instant_1,可降水量
+#CWAT,entire atmosphere (considered as a single layer),instant,1,cwat_entire_atmosphere_considered_as_a_single_layer_instant_1,鉛直積算雲水量
+#RH,entire atmosphere (considered as a single layer),instant,1,rh_entire_atmosphere_considered_as_a_single_layer_instant_1,相対湿度
+#TOZNE,entire atmosphere (considered as a single layer),instant,1,tozne_entire_atmosphere_considered_as_a_single_layer_instant_1,全オゾン量
+#LCDC,low cloud layer,instant,1,lcdc_low_cloud_layer_instant_1,下層雲量
+#LCDC,low cloud layer,average,1,lcdc_low_cloud_layer_average_1,下層雲量
+#MCDC,middle cloud layer,instant,1,mcdc_middle_cloud_layer_instant_1,中層雲量
+#MCDC,middle cloud layer,average,1,mcdc_middle_cloud_layer_average_1,中層雲量
+#HCDC,high cloud layer,instant,1,hcdc_high_cloud_layer_instant_1,上層雲量
+#HCDC,high cloud layer,average,1,hcdc_high_cloud_layer_average_1,上層雲量
+TCDC,entire atmosphere,instant,1,cloud_area_fraction,全雲量
+#TCDC,entire atmosphere,average,1,tcdc_entire_atmosphere_average_1,全雲量
+#HGT,cloud ceiling,instant,1,hgt_cloud_ceiling_instant_1,ジオポテンシャル高度
+#PRES,convective cloud bottom level,instant,1,pres_convective_cloud_bottom_level_instant_1,気圧
+#PRES,low cloud bottom level,average,1,pres_low_cloud_bottom_level_average_1,気圧
+#PRES,middle cloud bottom level,average,1,pres_middle_cloud_bottom_level_average_1,気圧
+#PRES,high cloud bottom level,average,1,pres_high_cloud_bottom_level_average_1,気圧
+#PRES,convective cloud top level,instant,1,pres_convective_cloud_top_level_instant_1,気圧
+#PRES,low cloud top level,average,1,pres_low_cloud_top_level_average_1,気圧
+#PRES,middle cloud top level,average,1,pres_middle_cloud_top_level_average_1,気圧
+#PRES,high cloud top level,average,1,pres_high_cloud_top_level_average_1,気圧
+#TMP,low cloud top level,average,1,tmp_low_cloud_top_level_average_1,気温
+#TMP,middle cloud top level,average,1,tmp_middle_cloud_top_level_average_1,気温
+#TMP,high cloud top level,average,1,tmp_high_cloud_top_level_average_1,気温
+#TCDC,convective cloud layer,instant,1,tcdc_convective_cloud_layer_instant_1,全雲量
+#TCDC,boundary layer cloud layer,average,1,tcdc_boundary_layer_cloud_layer_average_1,全雲量
+#CWORK,entire atmosphere (considered as a single layer),average,1,cwork_entire_atmosphere_considered_as_a_single_layer_average_1,雲仕事関数
+#DSWRF,surface,average,1,dswrf_surface_average_1,下向き短波放射
+#DLWRF,surface,average,1,dlwrf_surface_average_1,下向き長波放射
+#USWRF,surface,average,1,uswrf_surface_average_1,上向き短波放射
+#ULWRF,surface,average,1,ulwrf_surface_average_1,上向き長波放射
+#USWRF,top of atmosphere,average,1,uswrf_top_of_atmosphere_average_1,上向き短波放射
+#ULWRF,top of atmosphere,average,1,ulwrf_top_of_atmosphere_average_1,上向き長波放射
+#HLCY,3000-0 m above ground,instant,1,hlcy_3000_0_m_above_ground_instant_1,ストーム相対ヘリシティ
+#USTM,6000-0 m above ground,instant,1,ustm_6000_0_m_above_ground_instant_1,ストーム移動東西成分
+#VSTM,6000-0 m above ground,instant,1,vstm_6000_0_m_above_ground_instant_1,ストーム移動南北成分
+#PRES,tropopause,instant,1,pres_tropopause_instant_1,気圧
+#ICAHT,tropopause,instant,1,icaht_tropopause_instant_1,着氷高度
+#HGT,tropopause,instant,1,hgt_tropopause_instant_1,ジオポテンシャル高度
+#TMP,tropopause,instant,1,tmp_tropopause_instant_1,気温
+#UGRD,tropopause,instant,1,ugrd_tropopause_instant_1,東西風
+#VGRD,tropopause,instant,1,vgrd_tropopause_instant_1,南北風
+#VWSH,tropopause,instant,1,vwsh_tropopause_instant_1,鉛直風シア
+#PRES,max wind,instant,1,pres_max_wind_instant_1,気圧
+#ICAHT,max wind,instant,1,icaht_max_wind_instant_1,着氷高度
+#HGT,max wind,instant,1,hgt_max_wind_instant_1,ジオポテンシャル高度
+#UGRD,max wind,instant,1,ugrd_max_wind_instant_1,東西風
+#VGRD,max wind,instant,1,vgrd_max_wind_instant_1,南北風
+#TMP,max wind,instant,1,tmp_max_wind_instant_1,気温
+#UGRD,20 m above ground,instant,1,ugrd_20_m_above_ground_instant_1,東西風
+#VGRD,20 m above ground,instant,1,vgrd_20_m_above_ground_instant_1,南北風
+#UGRD,30 m above ground,instant,1,ugrd_30_m_above_ground_instant_1,東西風
+#VGRD,30 m above ground,instant,1,vgrd_30_m_above_ground_instant_1,南北風
+#UGRD,40 m above ground,instant,1,ugrd_40_m_above_ground_instant_1,東西風
+#VGRD,40 m above ground,instant,1,vgrd_40_m_above_ground_instant_1,南北風
+#UGRD,50 m above ground,instant,1,ugrd_50_m_above_ground_instant_1,東西風
+#VGRD,50 m above ground,instant,1,vgrd_50_m_above_ground_instant_1,南北風
+#TMP,80 m above ground,instant,1,tmp_80_m_above_ground_instant_1,気温
+#SPFH,80 m above ground,instant,1,spfh_80_m_above_ground_instant_1,比湿
+#PRES,80 m above ground,instant,1,pres_80_m_above_ground_instant_1,気圧
+#UGRD,80 m above ground,instant,1,ugrd_80_m_above_ground_instant_1,東西風
+#VGRD,80 m above ground,instant,1,vgrd_80_m_above_ground_instant_1,南北風
+#TMP,100 m above ground,instant,1,tmp_100_m_above_ground_instant_1,気温
+#UGRD,100 m above ground,instant,1,ugrd_100_m_above_ground_instant_1,東西風
+#VGRD,100 m above ground,instant,1,vgrd_100_m_above_ground_instant_1,南北風
+#TMP,1829 m above mean sea level,instant,1,tmp_1829_m_above_mean_sea_level_instant_1,気温
+#UGRD,1829 m above mean sea level,instant,1,ugrd_1829_m_above_mean_sea_level_instant_1,東西風
+#VGRD,1829 m above mean sea level,instant,1,vgrd_1829_m_above_mean_sea_level_instant_1,南北風
+#TMP,2743 m above mean sea level,instant,1,tmp_2743_m_above_mean_sea_level_instant_1,気温
+#UGRD,2743 m above mean sea level,instant,1,ugrd_2743_m_above_mean_sea_level_instant_1,東西風
+#VGRD,2743 m above mean sea level,instant,1,vgrd_2743_m_above_mean_sea_level_instant_1,南北風
+#TMP,3658 m above mean sea level,instant,1,tmp_3658_m_above_mean_sea_level_instant_1,気温
+#UGRD,3658 m above mean sea level,instant,1,ugrd_3658_m_above_mean_sea_level_instant_1,東西風
+#VGRD,3658 m above mean sea level,instant,1,vgrd_3658_m_above_mean_sea_level_instant_1,南北風
+#HGT,0C isotherm,instant,1,hgt_0c_isotherm_instant_1,ジオポテンシャル高度
+#RH,0C isotherm,instant,1,rh_0c_isotherm_instant_1,相対湿度
+#HGT,highest tropospheric freezing level,instant,1,hgt_highest_tropospheric_freezing_level_instant_1,ジオポテンシャル高度
+#RH,highest tropospheric freezing level,instant,1,rh_highest_tropospheric_freezing_level_instant_1,相対湿度
+#TMP,30-0 mb above ground,instant,1,tmp_30_0_mb_above_ground_instant_1,気温
+#RH,30-0 mb above ground,instant,1,rh_30_0_mb_above_ground_instant_1,相対湿度
+#SPFH,30-0 mb above ground,instant,1,spfh_30_0_mb_above_ground_instant_1,比湿
+#UGRD,30-0 mb above ground,instant,1,ugrd_30_0_mb_above_ground_instant_1,東西風
+#VGRD,30-0 mb above ground,instant,1,vgrd_30_0_mb_above_ground_instant_1,南北風
+#4LFTX,surface,instant,1,4lftx_surface_instant_1,4層リフティド指数
+#CAPE,180-0 mb above ground,instant,1,cape_180_0_mb_above_ground_instant_1,対流有効位置エネルギー
+#CIN,180-0 mb above ground,instant,1,cin_180_0_mb_above_ground_instant_1,対流抑制
+#HPBL,surface,instant,1,hpbl_surface_instant_1,境界層高度
+#RH,0.33-1 sigma layer,instant,1,rh_0_33_1_sigma_layer_instant_1,相対湿度
+#RH,0.44-1 sigma layer,instant,1,rh_0_44_1_sigma_layer_instant_1,相対湿度
+#RH,0.72-0.94 sigma layer,instant,1,rh_0_72_0_94_sigma_layer_instant_1,相対湿度
+#RH,0.44-0.72 sigma layer,instant,1,rh_0_44_0_72_sigma_layer_instant_1,相対湿度
+#TMP,0.995 sigma level,instant,1,tmp_0_995_sigma_level_instant_1,気温
+#POT,0.995 sigma level,instant,1,pot_0_995_sigma_level_instant_1,温位
+#RH,0.995 sigma level,instant,1,rh_0_995_sigma_level_instant_1,相対湿度
+#UGRD,0.995 sigma level,instant,1,ugrd_0_995_sigma_level_instant_1,東西風
+#VGRD,0.995 sigma level,instant,1,vgrd_0_995_sigma_level_instant_1,南北風
+#VVEL,0.995 sigma level,instant,1,vvel_0_995_sigma_level_instant_1,鉛直速度（気圧）
+#CAPE,90-0 mb above ground,instant,1,cape_90_0_mb_above_ground_instant_1,対流有効位置エネルギー
+#CIN,90-0 mb above ground,instant,1,cin_90_0_mb_above_ground_instant_1,対流抑制
+#CAPE,255-0 mb above ground,instant,1,cape_255_0_mb_above_ground_instant_1,対流有効位置エネルギー
+#CIN,255-0 mb above ground,instant,1,cin_255_0_mb_above_ground_instant_1,対流抑制
+#PLPL,255-0 mb above ground,instant,1,plpl_255_0_mb_above_ground_instant_1,持ち上げ凝結面気圧
+#LAND,surface,instant,1,land_surface_instant_1,陸海マスク
+#ICEC,surface,instant,1,icec_surface_instant_1,海氷密接度
+#ALBDO,surface,average,1,albdo_surface_average_1,アルベド
+#ICETMP,surface,instant,1,icetmp_surface_instant_1,海氷温度
+#UGRD,PV=2e-06 (Km^2/kg/s) surface,instant,1,ugrd_pv_2e_06_km_2_kg_s_surface_instant_1,東西風
+#VGRD,PV=2e-06 (Km^2/kg/s) surface,instant,1,vgrd_pv_2e_06_km_2_kg_s_surface_instant_1,南北風
+#TMP,PV=2e-06 (Km^2/kg/s) surface,instant,1,tmp_pv_2e_06_km_2_kg_s_surface_instant_1,気温
+#HGT,PV=2e-06 (Km^2/kg/s) surface,instant,1,hgt_pv_2e_06_km_2_kg_s_surface_instant_1,ジオポテンシャル高度
+#PRES,PV=2e-06 (Km^2/kg/s) surface,instant,1,pres_pv_2e_06_km_2_kg_s_surface_instant_1,気圧
+#VWSH,PV=2e-06 (Km^2/kg/s) surface,instant,1,vwsh_pv_2e_06_km_2_kg_s_surface_instant_1,鉛直風シア
+#UGRD,PV=-2e-06 (Km^2/kg/s) surface,instant,1,ugrd_pv_2e_06_km_2_kg_s_surface_instant_1,東西風
+#VGRD,PV=-2e-06 (Km^2/kg/s) surface,instant,1,vgrd_pv_2e_06_km_2_kg_s_surface_instant_1,南北風
+#TMP,PV=-2e-06 (Km^2/kg/s) surface,instant,1,tmp_pv_2e_06_km_2_kg_s_surface_instant_1,気温
+#HGT,PV=-2e-06 (Km^2/kg/s) surface,instant,1,hgt_pv_2e_06_km_2_kg_s_surface_instant_1,ジオポテンシャル高度
+#PRES,PV=-2e-06 (Km^2/kg/s) surface,instant,1,pres_pv_2e_06_km_2_kg_s_surface_instant_1,気圧
+#VWSH,PV=-2e-06 (Km^2/kg/s) surface,instant,1,vwsh_pv_2e_06_km_2_kg_s_surface_instant_1,鉛直風シア

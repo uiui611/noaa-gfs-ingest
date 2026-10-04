@@ -1,0 +1,90 @@
+# main のイメージを GHCR に公開し、その後で更新 webhook を通知します。
+# 通知失敗は警告として扱い、CronJob の次回実行から新しいイメージを使います。
+# main タグの公開と通知は同じ concurrency 範囲で実行します。
+name: Build, publish and deploy container image
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  IMAGE_NAME: ghcr.io/uiui611/noaa-gfs-ingest
+
+jobs:
+  build:
+    name: Validate pull request image
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Check out source
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4
+      - name: Build image without publishing
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7
+        with:
+          context: .
+          platforms: linux/amd64
+          push: false
+
+  publish:
+    name: Publish main image and request deployment
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    concurrency:
+      group: ghcr-noaa-gfs-ingest-main
+      cancel-in-progress: false
+    steps:
+      - name: Check out source
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4
+      - name: Log in to GHCR
+        uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Generate image tags and labels
+        id: metadata
+        uses: docker/metadata-action@dc802804100637a589fabce1cb79ff13a1411302 # v6
+        with:
+          images: ${{ env.IMAGE_NAME }}
+          flavor: latest=false
+          tags: |
+            type=raw,value=main
+            type=sha,format=long
+      - name: Build and publish image
+        uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7
+        with:
+          context: .
+          platforms: linux/amd64
+          push: true
+          tags: ${{ steps.metadata.outputs.tags }}
+          labels: ${{ steps.metadata.outputs.labels }}
+          cache-from: type=gha,scope=noaa-gfs-ingest-main
+          cache-to: type=gha,mode=max,scope=noaa-gfs-ingest-main
+      - name: Request deployment update
+        continue-on-error: true
+        timeout-minutes: 1
+        env:
+          DEPLOY_SERVICE_ID: noaa-gfs-ingest
+          DEPLOY_WEBHOOK_URL: https://deploy.mizu-mizu.info/v1/deployments
+          DEPLOY_OIDC_AUDIENCE: https://deploy.mizu-mizu.info
+        run: node .github/scripts/notify-deployment.mjs

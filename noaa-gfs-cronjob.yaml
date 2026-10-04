@@ -1,0 +1,142 @@
+# 概要:
+#   NOAA/NCEP の全球数値予報モデル GFS（0.25度）の選択したGRIBメッセージだけを
+#   HTTP Rangeで取得し、全球格子のZarrへ変換してRustFSへ保存する日次バッチです。
+#   保存後、前日サイクルのZarrがあれば2日分を48時間系列として結合し、
+#   MSM相当の日本周辺領域を第3次地域メッシュ（約1km）の中心へ双線形補間し、
+#   Zarrを `weather/forecast` 以下へ保存します。
+#   現在時刻から24時間前の時刻を直前の
+#   6時間サイクルへ切り下げるため、取得元で概ね1日前に公開されたデータが対象になります。
+#
+# 構成:
+#   - ConfigMap `noaa-gfs-ingest`: 予報時刻、S3接続先、保存先を設定
+#   - CronJob `noaa-gfs-ingest`: 毎日 04:15, 10:15, 16:15, 22:15 UTC に実行
+#
+# 前提条件:
+#   - 対象 Namespace は `default` です。
+#   - GHCR の `ghcr.io/uiui611/noaa-gfs-ingest:main` を公開パッケージにしてください。
+#   - Secret `rustfs-credentials` に `RUSTFS_ACCESS_KEY` と `RUSTFS_SECRET_KEY` が必要です。
+#   - RustFS に bucket `weather` を事前作成してください（このJobはbucketを作成しません）。
+#   - Pod から `nomads.ncep.noaa.gov:443` と `rustfs.default.svc.cluster.local:9000`
+#     へ到達できる必要があります。
+#
+# 適用後の確認:
+#   kubectl create job --from=cronjob/noaa-gfs-ingest noaa-gfs-ingest-manual -n default
+#   kubectl logs -n default job/noaa-gfs-ingest-manual -f
+#
+# 注意事項:
+#   - main への push で GHCR を更新し、webhook が CronJob の Pod テンプレートを更新します。
+#     次の定期実行から新しいイメージを利用し、実行中の Job は変更しません。
+#   - イメージ内の `/app/gfs-fields.csv` で先頭が `#` の要素行は取得しません。
+#     選択を変更した場合はコンテナイメージを再ビルドしてください。
+#   - 元GRIB2全体は保存せず、`.idx` と選択レコードのRangeレスポンスだけを転送します。
+#   - 全球Zarrの `_SUCCESS` が存在するサイクルは取得をスキップします。
+#   - 地域予報は前日と直近の全球Zarrの両方に `_SUCCESS` がある場合だけ作成します。
+#   - 地域予報は `_SUCCESS.processing` が現在の補間設定と一致する場合にスキップします。
+#     旧格子は保存済みの全球Zarrから再生成します。過去全件の自動再生成は行いません。
+#     再生成するサイクルの地域Zarrだけを消去して書き直し、不要な旧配列を残しません。
+#   - 地域予報は1時刻分ずつアップロード後にローカルファイルを削除し、一時領域2Gi内で処理します。
+#     全時刻と最終メタデータの保存後に `_SUCCESS` を作成します。
+#   - 約1kmの保存格子への補間は、元のGFS 0.25度格子にない物理情報を追加しません。
+#   - 新規保存前に対象サイクルの7日前以前の全球・地域Zarrを削除します。
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: noaa-gfs-ingest
+  namespace: default
+data:
+  GFS_SOURCE_BASE_URL: https://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod
+  SOURCE_AGE_HOURS: "24"
+  GFS_CYCLE: auto
+  GFS_FORECAST_HOURS: "0-24:3"
+  S3_ENDPOINT_URL: http://rustfs.default.svc.cluster.local:9000
+  AWS_REGION: us-east-1
+  S3_BUCKET: weather
+  S3_PREFIX: noaa-gfs
+  FORECAST_ENABLED: "true"
+  FORECAST_PREFIX: forecast
+  # 気象庁MSM GPV領域（22.4N-47.6N, 120E-150E）を格子外周の境界に使用します。
+  # 緯度30秒×経度45秒の第3次地域メッシュ中心へ双線形補間し、3024×2400格子を保存します。
+  FORECAST_LAT_MIN: "22.4"
+  FORECAST_LAT_MAX: "47.6"
+  FORECAST_LON_MIN: "120.0"
+  FORECAST_LON_MAX: "150.0"
+  RETENTION_DAYS: "7"
+  OVERWRITE: "false"
+  DOWNLOAD_RETRIES: "4"
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: noaa-gfs-ingest
+  namespace: default
+  labels:
+    app.kubernetes.io/name: noaa-gfs-ingest
+spec:
+  schedule: "15 4,10,16,22 * * *"
+  timeZone: Etc/UTC
+  concurrencyPolicy: Forbid
+  startingDeadlineSeconds: 3600
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      backoffLimit: 3
+      activeDeadlineSeconds: 14400
+      ttlSecondsAfterFinished: 604800
+      template:
+        metadata:
+          labels:
+            app.kubernetes.io/name: noaa-gfs-ingest
+        spec:
+          restartPolicy: Never
+          automountServiceAccountToken: false
+          enableServiceLinks: false
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 65532
+            runAsGroup: 65532
+            fsGroup: 65532
+            seccompProfile:
+              type: RuntimeDefault
+          containers:
+            - name: ingest
+              image: ghcr.io/uiui611/noaa-gfs-ingest:main
+              imagePullPolicy: Always
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                capabilities:
+                  drop:
+                    - ALL
+              envFrom:
+                - configMapRef:
+                    name: noaa-gfs-ingest
+              env:
+                - name: AWS_ACCESS_KEY_ID
+                  valueFrom:
+                    secretKeyRef:
+                      name: rustfs-credentials
+                      key: RUSTFS_ACCESS_KEY
+                - name: AWS_SECRET_ACCESS_KEY
+                  valueFrom:
+                    secretKeyRef:
+                      name: rustfs-credentials
+                      key: RUSTFS_SECRET_KEY
+                - name: AWS_EC2_METADATA_DISABLED
+                  value: "true"
+              resources:
+                requests:
+                  cpu: 100m
+                  memory: 128Mi
+                  ephemeral-storage: 1Gi
+                limits:
+                  cpu: "1"
+                  memory: 512Mi
+                  ephemeral-storage: 2Gi
+              volumeMounts:
+                - name: work
+                  mountPath: /tmp
+          volumes:
+            - name: work
+              emptyDir:
+                sizeLimit: 2Gi
