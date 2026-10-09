@@ -562,11 +562,20 @@ mod tests {
     fn stitched_order_preserves_previous_boundary_and_skips_latest_zero() {
         let times: Vec<_> = stitched_times(9, 9).collect();
         assert_eq!(times.len(), 17);
-        assert_eq!(&times[..9], &(0..9).map(|i| (SourceCycle::Previous, i)).collect::<Vec<_>>());
-        assert_eq!(&times[9..], &(1..9).map(|i| (SourceCycle::Latest, i)).collect::<Vec<_>>());
-        let hours: Vec<_> = times.iter().map(|&(cycle, index)| {
-            index * 3 + if cycle == SourceCycle::Latest { 24 } else { 0 }
-        }).collect();
+        assert_eq!(
+            &times[..9],
+            &(0..9)
+                .map(|i| (SourceCycle::Previous, i))
+                .collect::<Vec<_>>()
+        );
+        assert_eq!(
+            &times[9..],
+            &(1..9).map(|i| (SourceCycle::Latest, i)).collect::<Vec<_>>()
+        );
+        let hours: Vec<_> = times
+            .iter()
+            .map(|&(cycle, index)| index * 3 + if cycle == SourceCycle::Latest { 24 } else { 0 })
+            .collect();
         assert_eq!(hours, (0..=48).step_by(3).collect::<Vec<_>>());
         assert_eq!(times[8], (SourceCycle::Previous, 8)); // previous f024
         assert_eq!(times[9], (SourceCycle::Latest, 1)); // latest f003
