@@ -292,6 +292,22 @@ async fn clear_output(s3: &S3Client, bucket: &str, prefix: &str) -> Result<()> {
     crate::retention::delete_keys(s3, bucket, &keys).await
 }
 
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+enum SourceCycle {
+    Previous,
+    Latest,
+}
+
+// Keep the previous f024 at the shared boundary; skip latest f000.
+fn stitched_times(
+    previous_count: usize,
+    latest_count: usize,
+) -> impl Iterator<Item = (SourceCycle, usize)> {
+    (0..previous_count)
+        .map(|index| (SourceCycle::Previous, index))
+        .chain((1..latest_count).map(|index| (SourceCycle::Latest, index)))
+}
+
 pub async fn build_stitched_regional_forecast(
     s3: &S3Client,
     settings: &Settings,
@@ -490,40 +506,18 @@ pub async fn build_stitched_regional_forecast(
         );
         let attrs = array_attrs(&previous_metadata, &selection.zarr_name)?;
         let mut output_index = 0;
-        for source_index in 0..previous_hours.len() {
+        for (cycle, source_index) in stitched_times(previous_hours.len(), latest_hours.len()) {
+            let (prefix, array) = match cycle {
+                SourceCycle::Previous => (&previous_prefix, &previous_array),
+                SourceCycle::Latest => (&latest_prefix, &latest_array),
+            };
             let values = read_region_slice(
                 s3,
                 &settings.s3_bucket,
-                &previous_prefix,
+                prefix,
                 &selection.zarr_name,
                 source_index,
-                &previous_array,
-                grid.j_range,
-                grid.i_range,
-            )
-            .await?;
-            let interpolated = grid.interpolate(&values)?;
-            let paths =
-                writer.write_slice(&selection.zarr_name, output_index, &interpolated, attrs)?;
-            upload_slice(
-                s3,
-                &settings.s3_bucket,
-                &output_prefix,
-                &writer.path,
-                &paths,
-            )
-            .await?;
-            uploaded_chunks += paths.len();
-            output_index += 1;
-        }
-        for source_index in 1..latest_hours.len() {
-            let values = read_region_slice(
-                s3,
-                &settings.s3_bucket,
-                &latest_prefix,
-                &selection.zarr_name,
-                source_index,
-                &latest_array,
+                array,
                 grid.j_range,
                 grid.i_range,
             )
@@ -563,6 +557,29 @@ pub async fn build_stitched_regional_forecast(
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn stitched_order_preserves_previous_boundary_and_skips_latest_zero() {
+        let times: Vec<_> = stitched_times(9, 9).collect();
+        assert_eq!(times.len(), 17);
+        assert_eq!(
+            &times[..9],
+            &(0..9)
+                .map(|i| (SourceCycle::Previous, i))
+                .collect::<Vec<_>>()
+        );
+        assert_eq!(
+            &times[9..],
+            &(1..9).map(|i| (SourceCycle::Latest, i)).collect::<Vec<_>>()
+        );
+        let hours: Vec<_> = times
+            .iter()
+            .map(|&(cycle, index)| index * 3 + if cycle == SourceCycle::Latest { 24 } else { 0 })
+            .collect();
+        assert_eq!(hours, (0..=48).step_by(3).collect::<Vec<_>>());
+        assert_eq!(times[8], (SourceCycle::Previous, 8)); // previous f024
+        assert_eq!(times[9], (SourceCycle::Latest, 1)); // latest f003
+    }
 
     #[test]
     fn completion_requires_matching_processing() {

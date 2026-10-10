@@ -29,6 +29,10 @@ jobs:
           persist-credentials: false
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@f87e5991a6d7451dcb8d9637bfbc97413f497069 # v4
+      - name: Test Rust with native libraries
+        run: |
+          docker build --target builder --tag noaa-gfs-ingest:test .
+          docker run --rm noaa-gfs-ingest:test cargo test --locked
       - name: Build image without publishing
         uses: docker/build-push-action@c3c9e263c25d99ce0380d002d59b67737d91b0dc # v7
         with:
