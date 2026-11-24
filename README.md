@@ -123,6 +123,10 @@ s3://weather/forecast/YYYYMMDDHH.zarr/
 過去の未生成サイクルは自動補完されません。対象サイクルは実行時刻と現在の設定で
 決まり、手動実行でも保持期限の削除が先に実行されます。
 
+連結予報を有効にする場合、`GFS_FORECAST_HOURS` は `0-24:3` と同じ時刻列が必要です。
+組み合わせが無効な場合は、保持期限処理や生データ取り込みの前に起動時エラーになります。
+全球データだけを別の時刻列で取り込む場合は `FORECAST_ENABLED=false` を指定します。
+
 `FORECAST_ENABLED=false` で
 後続処理を無効化でき、境界と保存prefixは `FORECAST_LAT_*`, `FORECAST_LON_*`,
 `FORECAST_PREFIX` で変更できます。
