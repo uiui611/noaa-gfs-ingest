@@ -168,6 +168,11 @@ mod tests {
     }
 
     #[test]
+    fn rejects_non_ascii_timestamp() {
+        assert_eq!(parse_cycle("é026090506"), None);
+    }
+
+    #[test]
     fn cutoff_includes_exactly_seven_days_ago() {
         let current: DateTime<Utc> = "2026-09-12T06:00:00Z".parse().unwrap();
         let cutoff = current - Duration::days(7);
