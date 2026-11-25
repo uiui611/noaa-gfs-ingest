@@ -1,7 +1,7 @@
 use crate::mesh3::Mesh3Grid;
 use crate::{
-    RegionalZarrWriter, Selection, Settings, blosc_decompress, collect_files,
-    forecast_object_prefix, zarr_object_prefix,
+    RegionalZarrWriter, Selection, Settings, STITCHED_FORECAST_HOURS, blosc_decompress,
+    collect_files, forecast_object_prefix, validate_forecast_hours, zarr_object_prefix,
 };
 use anyhow::{Context, Result, ensure};
 use aws_sdk_s3::Client as S3Client;
@@ -318,11 +318,7 @@ pub async fn build_stitched_regional_forecast(
         eprintln!("stitched regional forecast is disabled");
         return Ok(());
     }
-    let expected_hours: Vec<u32> = (0..=24).step_by(3).collect();
-    ensure!(
-        settings.forecast_hours == expected_hours,
-        "stitched 48-hour forecast requires GFS_FORECAST_HOURS=0-24:3"
-    );
+    validate_forecast_hours(settings.forecast_enabled, &settings.forecast_hours)?;
     let previous_cycle = latest_cycle - Duration::hours(24);
     let previous_prefix = zarr_object_prefix(settings, previous_cycle);
     let latest_prefix = zarr_object_prefix(settings, latest_cycle);
@@ -426,7 +422,7 @@ pub async fn build_stitched_regional_forecast(
     )?;
     ensure!(
         previous_hours
-            == expected_hours
+            == STITCHED_FORECAST_HOURS
                 .iter()
                 .map(|&value| value as i32)
                 .collect::<Vec<_>>()

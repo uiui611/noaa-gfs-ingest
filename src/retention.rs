@@ -8,7 +8,7 @@ use std::collections::{BTreeSet, HashSet};
 const LEGACY_PREFIXES: [&str; 2] = ["noaa/gfs", "forecast/gfs"];
 
 fn parse_cycle(value: &str) -> Option<DateTime<Utc>> {
-    if value.len() != 10 {
+    if value.len() != 10 || !value.bytes().all(|byte| byte.is_ascii_digit()) {
         return None;
     }
     let date = NaiveDate::parse_from_str(&value[..8], "%Y%m%d").ok()?;
@@ -158,6 +158,18 @@ mod tests {
             Some(expected)
         );
         assert_eq!(object_cycle("noaa-gfs", "noaa-gfs/unmanaged/object"), None);
+    }
+
+    #[test]
+    fn rejects_malformed_timestamps() {
+        for value in ["202609050x", "2026023006", "2026090524", "202609050"] {
+            assert_eq!(parse_cycle(value), None);
+        }
+    }
+
+    #[test]
+    fn rejects_non_ascii_timestamp() {
+        assert_eq!(parse_cycle("é026090506"), None);
     }
 
     #[test]

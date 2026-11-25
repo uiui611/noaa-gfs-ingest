@@ -38,6 +38,16 @@ pub struct Settings {
     pub download_retries: u32,
 }
 
+const STITCHED_FORECAST_HOURS: [u32; 9] = [0, 3, 6, 9, 12, 15, 18, 21, 24];
+
+fn validate_forecast_hours(enabled: bool, hours: &[u32]) -> Result<()> {
+    ensure!(
+        !enabled || hours == STITCHED_FORECAST_HOURS,
+        "stitched 48-hour forecast requires GFS_FORECAST_HOURS=0-24:3"
+    );
+    Ok(())
+}
+
 impl Settings {
     pub fn from_env() -> Result<Self> {
         let bucket = env("S3_BUCKET", "").trim().to_owned();
@@ -88,6 +98,9 @@ impl Settings {
             forecast_lon_min <= forecast_lon_max,
             "FORECAST_LON_MIN must not exceed FORECAST_LON_MAX"
         );
+        let forecast_hours = parse_forecast_hours(&env("GFS_FORECAST_HOURS", "0-24:3"))?;
+        let forecast_enabled = parse_bool(&env("FORECAST_ENABLED", "true"))?;
+        validate_forecast_hours(forecast_enabled, &forecast_hours)?;
         Ok(Self {
             source_base_url: env(
                 "GFS_SOURCE_BASE_URL",
@@ -97,7 +110,7 @@ impl Settings {
             .to_owned(),
             source_age_hours,
             cycle,
-            forecast_hours: parse_forecast_hours(&env("GFS_FORECAST_HOURS", "0-24:3"))?,
+            forecast_hours,
             selection_file: PathBuf::from(env("GFS_SELECTION_FILE", "/app/gfs-fields.csv")),
             s3_endpoint_url: std::env::var("S3_ENDPOINT_URL")
                 .ok()
@@ -105,7 +118,7 @@ impl Settings {
             s3_region: env("AWS_REGION", "us-east-1"),
             s3_bucket: bucket,
             s3_prefix: env("S3_PREFIX", "noaa-gfs").trim_matches('/').to_owned(),
-            forecast_enabled: parse_bool(&env("FORECAST_ENABLED", "true"))?,
+            forecast_enabled,
             forecast_prefix: env("FORECAST_PREFIX", "forecast")
                 .trim_matches('/')
                 .to_owned(),
@@ -149,14 +162,12 @@ pub type SelectorKey = (String, String, String, u32);
 
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct IndexEntry {
-    pub record: u32,
     pub start: u64,
     pub end: Option<u64>,
     pub short_name: String,
     pub level: String,
     pub statistic: String,
     pub occurrence: u32,
-    pub forecast_description: String,
 }
 
 impl IndexEntry {
@@ -341,20 +352,19 @@ pub fn parse_index(text: &str) -> Result<Vec<IndexEntry>> {
     for line in text.lines() {
         let parts: Vec<_> = line.split(':').collect();
         ensure!(parts.len() >= 7, "invalid NOAA idx line: {line:?}");
+        parts[0].parse::<u32>()?;
         let stat = statistic(parts[5]).to_owned();
         let occurrence = occurrences
             .entry((parts[3].to_owned(), parts[4].to_owned(), stat.clone()))
             .or_default();
         *occurrence += 1;
         entries.push(IndexEntry {
-            record: parts[0].parse()?,
             start: parts[1].parse()?,
             end: None,
             short_name: parts[3].to_owned(),
             level: parts[4].to_owned(),
             statistic: stat,
             occurrence: *occurrence,
-            forecast_description: parts[5].to_owned(),
         });
     }
     for index in 0..entries.len().saturating_sub(1) {
@@ -758,27 +768,13 @@ impl RegionalZarrWriter {
         }
         let chunk_j = self.nj.min(512);
         let chunk_i = self.ni.min(512);
-        let mut paths = Vec::new();
-        for cj in 0..self.nj.div_ceil(chunk_j) {
-            for ci in 0..self.ni.div_ceil(chunk_i) {
-                let mut chunk = vec![f32::NAN; chunk_j * chunk_i];
-                for local_j in 0..chunk_j {
-                    let source_j = cj * chunk_j + local_j;
-                    if source_j >= self.nj {
-                        break;
-                    }
-                    let count = chunk_i.min(self.ni - ci * chunk_i);
-                    let source = source_j * self.ni + ci * chunk_i;
-                    let target = local_j * chunk_i;
-                    chunk[target..target + count].copy_from_slice(&values[source..source + count]);
-                }
-                let compressed = blosc_zstd_bitshuffle(&as_le_f32(&chunk), 4)?;
-                let path = directory.join(format!("{forecast_index}.{cj}.{ci}"));
-                fs::write(&path, compressed)?;
-                paths.push(path);
-            }
-        }
-        Ok(paths)
+        write_slice_chunks(
+            &directory,
+            forecast_index,
+            (self.nj, self.ni),
+            (chunk_j, chunk_i),
+            values,
+        )
     }
 
     pub fn consolidate_metadata(&self) -> Result<()> {
@@ -934,26 +930,7 @@ impl ZarrWriter {
         }
         let chunk_j = nj.min(361);
         let chunk_i = ni.min(720);
-        for cj in 0..nj.div_ceil(chunk_j) {
-            for ci in 0..ni.div_ceil(chunk_i) {
-                let mut chunk = vec![f32::NAN; chunk_j * chunk_i];
-                for local_j in 0..chunk_j {
-                    let source_j = cj * chunk_j + local_j;
-                    if source_j >= nj {
-                        break;
-                    }
-                    let count = chunk_i.min(ni - ci * chunk_i);
-                    let source = source_j * ni + ci * chunk_i;
-                    let target = local_j * chunk_i;
-                    chunk[target..target + count].copy_from_slice(&values[source..source + count]);
-                }
-                let compressed = blosc_zstd_bitshuffle(&as_le_f32(&chunk), 4)?;
-                fs::write(
-                    directory.join(format!("{forecast_index}.{cj}.{ci}")),
-                    compressed,
-                )?;
-            }
-        }
+        write_slice_chunks(&directory, forecast_index, (nj, ni), (chunk_j, chunk_i), &values)?;
         Ok(())
     }
 
@@ -1001,6 +978,38 @@ pub fn collect_files(directory: &Path) -> Result<Vec<PathBuf>> {
     }
     files.sort();
     Ok(files)
+}
+
+fn write_slice_chunks(
+    directory: &Path,
+    forecast_index: usize,
+    grid: (usize, usize),
+    chunk_shape: (usize, usize),
+    values: &[f32],
+) -> Result<Vec<PathBuf>> {
+    let (nj, ni) = grid;
+    let (chunk_j, chunk_i) = chunk_shape;
+    let mut paths = Vec::new();
+    for cj in 0..nj.div_ceil(chunk_j) {
+        for ci in 0..ni.div_ceil(chunk_i) {
+            let mut chunk = vec![f32::NAN; chunk_j * chunk_i];
+            for local_j in 0..chunk_j {
+                let source_j = cj * chunk_j + local_j;
+                if source_j >= nj {
+                    break;
+                }
+                let count = chunk_i.min(ni - ci * chunk_i);
+                let source = source_j * ni + ci * chunk_i;
+                let target = local_j * chunk_i;
+                chunk[target..target + count].copy_from_slice(&values[source..source + count]);
+            }
+            let compressed = blosc_zstd_bitshuffle(&as_le_f32(&chunk), 4)?;
+            let path = directory.join(format!("{forecast_index}.{cj}.{ci}"));
+            fs::write(&path, compressed)?;
+            paths.push(path);
+        }
+    }
+    Ok(paths)
 }
 
 #[cfg(test)]
@@ -1072,6 +1081,43 @@ mod tests {
         assert_eq!(statistic("0-3 hour acc fcst"), "accumulation");
         assert_eq!(statistic("0-3 hour ave fcst"), "average");
     }
+    #[test]
+    fn forecast_hours_require_stitched_shape_only_when_enabled() {
+        assert!(validate_forecast_hours(true, &STITCHED_FORECAST_HOURS).is_ok());
+        assert!(validate_forecast_hours(true, &[0, 6, 12]).is_err());
+        assert!(validate_forecast_hours(false, &[0, 6, 12]).is_ok());
+    }
+
+    #[test]
+    fn index_requires_numeric_record_id() {
+        assert!(parse_index("unknown:0:d=2026101000:TMP:surface:anl:").is_err());
+    }
+
+    #[test]
+    fn exact_zarr_chunks_preserve_values_and_nan() {
+        let temp = tempfile::tempdir().unwrap();
+        let paths = write_slice_chunks(
+            temp.path(),
+            2,
+            (2, 4),
+            (2, 2),
+            &[1.0, f32::NAN, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0],
+        )
+        .unwrap();
+        assert_eq!(paths, [temp.path().join("2.0.0"), temp.path().join("2.0.1")]);
+        let read = |path: &Path| {
+            let bytes = blosc_decompress(&fs::read(path).unwrap(), 16).unwrap();
+            bytes.chunks_exact(4)
+                .map(|bytes| f32::from_le_bytes(bytes.try_into().unwrap()))
+                .collect::<Vec<_>>()
+        };
+        let left = read(&paths[0]);
+        assert_eq!(left[0], 1.0);
+        assert!(left[1].is_nan());
+        assert_eq!(&left[2..], &[4.0, 5.0]);
+        assert_eq!(read(&paths[1]), [2.0, 3.0, 6.0, 7.0]);
+    }
+
     #[test]
     fn index_ranges() {
         let entries=parse_index("1:0:d=2026082406:TMP:surface:3 hour fcst:\n2:100:d=2026082406:APCP:surface:0-3 hour acc fcst:\n3:250:d=2026082406:APCP:surface:0-3 hour acc fcst:\n").unwrap();
